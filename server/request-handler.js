@@ -54,15 +54,28 @@ var requestHandler = function(request, response) {
   function handleEndpoints (method, url){
     if ( url === '/classes/messages' ){
       if (method === "GET"){
+        fs.readFile('data.json', (err, data) => {
+          if(err) throw err.message;
+          var f = data.toString().split('\n')
+          f.pop();
 
-        // composeResponse(response);
-        var statusCode = 200;
-        var headers = defaultCorsHeaders;
-        headers['Content-Type'] = 'text/plain';
-        response.writeHead(statusCode, headers);
-        // response.end('Hello Welcome To The Quickie Market');
-        var data = { results: [1,2,3,4,5] }
-        response.end(JSON.stringify(data))
+          var result = f.map((i)=> {
+            var x = JSON.parse(i)
+            return x})
+          var statusCode = 200;
+          var headers = defaultCorsHeaders;
+          headers['Content-Type'] = 'text/plain';
+          response.writeHead(statusCode, headers);
+          // response.end('Hello Welcome To The Quickie Market');
+          // var data = { results: [1,2,3,4,5] }
+          // console.log("RIGHT BEFORE WE RETURN: ", result)
+          response.end(JSON.stringify({results: result}))
+        })
+
+
+
+
+
       } else if (method === "POST") {
         request.on('data', function(data){
           // console.log("DATAS IS: ",JSON.parse(data))
@@ -75,9 +88,10 @@ var requestHandler = function(request, response) {
             //     if (err) throw err;
             //     console.log('is saved')
             //  })
+            // fs.appendFile('data.json', JSON.stringify(JSON.parse(data + '\n')), function(err){
             fs.appendFile('data.json', data + '\n', function(err){
               if (err) throw err.message;
-              console.log('appended: ', data)
+              // console.log('appended: ', data)
               var statusCode = 201;
               var headers = defaultCorsHeaders;
               headers['Content-Type'] = 'text/plain';

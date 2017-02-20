@@ -18,9 +18,15 @@ describe('Node Server Request Listener Function', function() {
     var res = new stubs.response();
 
     handler.requestHandler(req, res);
-    console.log('RESPONSE CODE IS @@@@@@: ', res._responseCode)
     // debugger;
-    // expect(1).to.equal(1)
+    // 
+    // setInterval(function(){})
+    // var count = 0;
+    // while( count < 6000){
+    //   count ++;
+    // }
+    // console.log('RESPONSE CODE IS @@@@@@: ', count, res)
+
     expect(res._responseCode).to.equal(200);
     expect(res._ended).to.equal(true);
   });
