@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chatterbox</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+
+    <!-- dependencies -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-timeago/jquery.timeago.js"></script>
+    <script src='bower_components/underscore/underscore.js'></script>
+    <script>
+      // YOU DO NOT NEED TO EDIT THIS CODE
+      if (!/(&|\?)username=/.test(window.location.search)) {
+        var newSearch = window.location.search;
+        if (newSearch !== '' & newSearch !== '?') {
+          newSearch += '&';
+        }
+        window.userInput = prompt('What is your name?') || 'anonymous';
+        newSearch += 'username=' + window.userInput;
+        window.location.search = newSearch;
+      }
+    </script>
+    <!-- your scripts -->
+    <script src="env/config.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <header>
+        <h1><span>chatter</span>box</h1>
+        <img src='images/chatterbox logo small.png' class='smallLogo'>
+        <div id='userContainer'>
+          <img class='logo'  src="images/userIcon.svg"></img>
+          <div class='userInput'></div>          
+        </div>
+      </header>
+      <div class='input'>
+        <div class='textInput' contenteditable='true'>chat text</div>
+        <div class='submit btn'>submit</div>
+      </div>
+      <div id='roomSelect'></div>
+      <div id="chats"></div>
+    </div>
+
+  </body>
+</html>
