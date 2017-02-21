@@ -12,7 +12,7 @@ let rooms = {};
 let activeRoom;
 
 let opts = {
-  refreshInterval: 3000,
+  refreshInterval: 10000,
   maxChats: 100,
 }
 
@@ -46,7 +46,7 @@ class Message {
 
 class App {
   constructor(){
-    this.server = 'http://parse.sfs.hackreactor.com/chatterbox/classes/messages';
+    this.server = 'http://127.0.0.1:3000/classes/messages';
     this.friends = {};
     this.send = this.send.bind(this);
     this.fetch = this.fetch.bind(this);
@@ -62,7 +62,8 @@ class App {
       url: this.server,
       type: 'POST',
       data: JSON.stringify(message),
-      contentType: 'application/json',
+      contentType: 'text/plain',
+      // contentType: 'application/json',
       success: function (data) {
         console.log('chatterbox: Message sent');
         console.log(data);
@@ -79,25 +80,35 @@ class App {
       // This is the url you should use to communicate with the parse API server.
       url: this.server,
       type: 'GET',
-      data: {order: '-createdAt', limit: 1000},
+      // data: {order: '-createdAt', limit: 1000},
       dataType: 'json',
       success: function (data) {
-        console.log('chatterbox: Messages received');
+        console.log('chatterbox: Messages received: ', data);
         // newChats = {};
         chats = [];
+        // for(let chat of data.results){
+        //   if(chat.username && chat.text && chat.roomname){
+        //     chat.username = escapeString(chat.username).slice(0,20).replace(/%/g,'');
+        //     chat.text = escapeString(chat.text).replace(/%/g,'');
+        //     chat.roomname = escapeString(chat.roomname).slice(0,20).replace(/%/g,'');
+        //     chats.push(chat);
+        //     users.push(chat.username);
+        //     rooms[chat.roomname] = true;
+        //   }
+        // }
         for(let chat of data.results){
-          if(chat.username && chat.text && chat.roomname){
+          if(chat.username && chat.text){
             chat.username = escapeString(chat.username).slice(0,20).replace(/%/g,'');
             chat.text = escapeString(chat.text).replace(/%/g,'');
-            chat.roomname = escapeString(chat.roomname).slice(0,20).replace(/%/g,'');
+            // chat.roomname = escapeString(chat.roomname).slice(0,20).replace(/%/g,'');
             chats.push(chat);
             users.push(chat.username);
-            rooms[chat.roomname] = true;
+            // rooms[chat.roomname] = true;
           }
         }
         //sort chats by when created
-        chats.sort((a,b) => Date.parse(a['createdAt']) - Date.parse(b['createdAt']));
-        console.dir(chats);
+        // chats.sort((a,b) => Date.parse(a['createdAt']) - Date.parse(b['createdAt']));
+        //console.dir(chats);
       },
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
