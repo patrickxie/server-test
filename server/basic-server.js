@@ -2,12 +2,40 @@
 var http = require('http');
 var handleRequest = require('./request-handler');
 var express = require('express')
+var path = require('path')
+
+
 
 var app = express();
 
+// app.use(express.static(__dirname + '/public'));
+
+app.use(express.static('public'))
+
 app.get('/classes/messages', function (req, res) {
-  res.send('Hello India!')
+  handleRequest.requestHandler(req, res);
 })
+
+app.post('/classes/messages', function(req, res) {
+  handleRequest.requestHandler(req, res);
+});
+
+// app.use('/public' , express.static(path.join(__dirname  + 'index.html' )));
+
+// app.use('/public' , express.static(path.join(__dirname  + 'styles.css' )));
+
+
+app.get('/', function(req, res) {
+
+
+    // res.sendFile(path.join(__dirname + '/../client/index.html'));
+    // res.sendFile(path.join(__dirname + '/../client/index.html'));
+});
+
+
+    // res.sendFile(path.join(__dirname + '/../client/index.html'));
+    //res.sendFile(path.join(__dirname + '/public/index.html'));
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')

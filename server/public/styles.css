@@ -1,0 +1,169 @@
+body {
+  background: white;
+  text-align: center;
+  padding: 0 25px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+}
+
+#main {
+  width: 60%;
+  margin: auto;
+  text-align: left;
+  padding: 50px 60px;
+  background: #eee;
+  height: 100vh;
+}
+
+header h1 {
+  margin-top: 0;
+  font-size: 35px;
+  margin-bottom: 5px;
+  padding: 5px;
+  display: inline-block;
+  float: left;
+  color: #a4211e;
+  font-weight: 700;
+}
+
+header h1 span {
+  font-weight: 400;
+}
+
+header .smallLogo {
+  height: 30px;
+}
+
+header #userContainer {
+
+}
+
+header #userContainer .logo{
+  float: right;
+  height: 20px;
+}
+
+header .userInput {
+  display: inline-block;
+  float: right;
+  padding-right: 5px;
+}
+
+.input {
+  vertical-align: middle;
+  text-align: right;
+  clear: both;
+  padding: 20px 0;
+}
+
+.textInput,.submit {
+  padding: 8px 15px;
+  /*border: 1px solid black;*/
+  display: inline-block;
+}
+
+.textInput {
+  min-width: 104px;
+  max-width: 90%;
+  background-color: white;
+  text-align: left;
+}
+
+.submit {
+  display: inline-block;
+  color: #a4211e;
+  width: auto;
+  margin-left: 10px;
+}
+
+.submit:hover {
+  cursor: pointer;
+  text-shadow: 0 0 5px lightgray;
+}
+
+#roomSelect {
+  float: left;
+  clear: left;
+  width: 22%;
+}
+
+#roomSelect div {
+  max-width: 90%;
+  overflow: hidden;
+  background-color: white;
+  color: #a4211e;
+  padding: 8px 15px 8px 15px;
+  margin: 3px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+#roomSelect div.activeRoom {
+  background-color: #a4211e;
+  color: white;
+}
+
+#chats {
+  width: 72%;
+  max-height: 75%;
+  margin: auto;
+  background: white;
+  text-align: left;
+  box-shadow: 0 0 40px white;
+  border-radius: 5px;
+  float: right;
+  padding: 30px 0;
+  overflow-y: scroll;
+}
+
+#chats .container {
+  width: auto;
+  max-width: 80%;
+  margin-bottom: 3px;
+  float: left;
+  clear: both;
+  margin-left: 30px;
+}
+
+#chats .username {
+  max-width: 150px;
+  overflow: hidden;
+  font-size: 0.7em;
+  display: inline-block;
+  float: left;
+  clear: both;
+}
+
+#chats .chatTime {
+  width: auto;
+  font-size: 0.6em;
+  color: darkgray;
+  display: inline-block;
+  margin-left: 10px;
+  clear: both;
+  float: right;
+  text-align: right;
+}
+
+#chats .chatText {
+  font-size: 0.8em;
+  max-width: 100%;
+  overflow: auto;
+  background-color: #f5f5f5;
+  color: black;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 8px 15px 8px 15px;
+/*  border-right: 10px #white solid;*/
+  border: 1px solid darkgray;
+  float: left;
+  clear: both;
+}
+
+.chat:hover {
+    background-color: #ddd;
+}
+
+#chats .friend {
+  text-shadow: 0 0 3px #e86663;
+}
