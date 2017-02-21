@@ -1,33 +1,7 @@
 var fs = require('fs');
 
 
-// fs.readFile('data.json', (err, data) => {
-//   if(err) throw err.message;
-//   var f = data.toString().split('\n')
-//   for (var i = 0; i < f.length-1; i++) {
-//     console.log(typeof f[i])
-//     console.log(f[i])
-//     console.log(JSON.parse(f[i]));
-//   };
-//   console.log(`file has ${f.length -1} objects`)
-// })
-
-
-// fs.readFile('test.json', (err, data) => {
-//   if(err) throw err.message;
-//   myFile = data;
-//   // console.log(data.toString())
-// })
-
-
-
-// fs.writeFile('test.json', 'hello Node.js', (err) => {
-//   if (err) throw err;
-//   console.log('is saved')
-// })
-
-
-
+ 
 
 var requestHandler = function(request, response) {
 
