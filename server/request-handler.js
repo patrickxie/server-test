@@ -48,6 +48,9 @@ var requestHandler = function(request, response) {
   // console.log('REQUEST IS: ', request)  
   // console.logs in your code.
   console.log('Serving request type ' + request.method + ' for url ' + request.url);
+  // request.on('data', function(data){
+  //   console.log('DATAAA is: ', JSON.parse(data));
+  // })
 
   // console.log('DATA IS: ', request.data)
   handleEndpoints(request.method, request.url);
@@ -78,7 +81,7 @@ var requestHandler = function(request, response) {
 
       } else if (method === "POST") {
         request.on('data', function(data){
-          // console.log("DATAS IS: ",JSON.parse(data))
+          // console.log("POSTDATAS IS: ",JSON.parse(data))
             // var D;
             // fs.readFile('data.json', (err, prevData) => {
             //   if(err) throw err.message;
@@ -111,6 +114,7 @@ var requestHandler = function(request, response) {
       response.writeHead(statusCode, headers);
       response.end('error')
     }
+
 
   }
 
